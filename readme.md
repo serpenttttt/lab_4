@@ -8,7 +8,7 @@ Before start clone the repository to your local computer
 
 ## Building the Project with CMake
 1. Navigate to the root directory of the project:
-   ```cd Lab4_course_1_c```
+   ```cd lab_4```
 2. Create a "build" directory:
    ```mkdir build```
 3. Navigate to the "build" directory:
