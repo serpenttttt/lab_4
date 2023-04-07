@@ -1,29 +1,13 @@
-#include <math.h>
-
-// функция для перевода числа в двоичную систему
-int to_bin (int dec) {
-    int bin = 0;
-    int i;
-    for (i = 0; (dec / 2) >= 1; ++i) {
-        bin = bin + pow(10, i)*(dec % 2);
-        dec /= 2;
-    }
-    bin = bin + dec * pow(10, i);
-    return bin;
-}
+#include <stdio.h>
 
 // функция для подсчета количества установленных нечетных бит в числе.
-int count_uneven(int bin) {
+int count_uneven(int dec) {
     int count = 0;
-    int j = 0;
-    for(j = 0; (bin / 10) >= 1; ++j) {
-        if (bin % 10 == 1 && j % 2 == 0) {
-            count += 1;
-        }
-        bin /= 10;
-    }
-    if (bin % 10 == 1 && j % 2 == 0) {
-        count += 1;
+    for (int i = 0; i < sizeof(dec) * 8; i += 2) { // sizeof предоставляет объем хранения (в байтах) => умножаем на 8, чтобы получить биты
+        if ((dec & (1 << i)) >> i) // сдвигаем 1 на i бит влево, побитово умножаем на число, сдвигаем биты результата вправо на i
+            ++count;
     }
     return count;
 }
+
+//1000 ->
